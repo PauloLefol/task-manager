@@ -1,0 +1,24 @@
+<div>
+  <h1>Training Angular with Python</h1>
+  <div>
+    <h2>Tasks</h2>
+    <button (click)="deleteAllTasks()">Clear all</button>
+    <button (click)="saveTasks()">Save all tasks</button>
+
+  </div>
+  <ul>
+    <div class="task-item" *ngFor="let item of tasks">
+      <li>{{item.title}}</li>
+      <input type="checkbox" [checked]="item.completed" (change)="item.completed = !item.completed">
+      <button (click)="deleteTask(item)">Delete task</button>
+    </div>
+  </ul>
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <div class="form-group">
+      <label for="name">New item:</label>
+      <input type="text" id="item" formControlName="item" name="item" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
